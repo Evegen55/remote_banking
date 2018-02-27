@@ -19,7 +19,7 @@ public class SimpleRestController {
     public ResponseEntity<String> hello() {
         LOGGER.info("Simple REST controller has been invoked");
         return ResponseEntity.ok()
-                .contentType(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.TEXT_PLAIN)
                 .header(HttpHeaders.CONTENT_DISPOSITION)
                 .body("Hello, world!");
     }
