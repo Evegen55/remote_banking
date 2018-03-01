@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
-@SpringBootApplication(scanBasePackages = "com.remote.banking")
+@SpringBootApplication(scanBasePackages = {"com.remote.banking"})
 public class SpringBootRestApplication extends SpringBootServletInitializer {
 
     public static void main(final String[] args) {
