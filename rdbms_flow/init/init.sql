@@ -36,8 +36,8 @@ CREATE TABLE emails (
   PRIMARY KEY (idemails),
   UNIQUE KEY email_UNIQUE (email),
   KEY fk_emails_person_idx (person_idperson),
-  KEY fk_emails_google_accounts1_idx (google_accounts_idgoogle_accounts),
-  CONSTRAINT fk_emails_google_accounts1 FOREIGN KEY (google_accounts_idgoogle_accounts) REFERENCES google_accounts (idgoogle_accounts) ON DELETE SET NULL ON UPDATE SET NULL,
+  UNIQUE KEY fk_emails_google_accounts_idx (google_accounts_idgoogle_accounts),
+  CONSTRAINT fk_emails_google_accounts FOREIGN KEY (google_accounts_idgoogle_accounts) REFERENCES google_accounts (idgoogle_accounts) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT fk_emails_person FOREIGN KEY (person_idperson) REFERENCES person (idperson) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 INSERT INTO remote_banking.emails

@@ -31,11 +31,11 @@ CREATE TABLE `emails` (
   `google_accounts_idgoogle_accounts` int(11) DEFAULT NULL COMMENT 'email can be not a google',
   PRIMARY KEY (`idemails`),
   UNIQUE KEY `email_UNIQUE` (`email`),
+  UNIQUE KEY `fk_emails_google_accounts_idx` (`google_accounts_idgoogle_accounts`),
   KEY `fk_emails_person_idx` (`person_idperson`),
-  KEY `fk_emails_google_accounts1_idx` (`google_accounts_idgoogle_accounts`),
-  CONSTRAINT `fk_emails_google_accounts1` FOREIGN KEY (`google_accounts_idgoogle_accounts`) REFERENCES `google_accounts` (`idgoogle_accounts`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `fk_emails_google_accounts` FOREIGN KEY (`google_accounts_idgoogle_accounts`) REFERENCES `google_accounts` (`idgoogle_accounts`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `fk_emails_person` FOREIGN KEY (`person_idperson`) REFERENCES `person` (`idperson`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `emails` (
 
 LOCK TABLES `emails` WRITE;
 /*!40000 ALTER TABLE `emails` DISABLE KEYS */;
-INSERT INTO `emails` VALUES (4,'John@Doe.com',1,NULL),(5,'Jane@Doe.com',2,NULL),(6,'Jack@Doe.com',3,NULL);
+INSERT INTO `emails` VALUES (1,'John@Doe.com',1,NULL),(2,'Jane@Doe.com',2,NULL),(3,'Jack@Doe.com',3,NULL);
 /*!40000 ALTER TABLE `emails` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,4 +115,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-01 14:33:56
+-- Dump completed on 2018-03-01 20:20:21
