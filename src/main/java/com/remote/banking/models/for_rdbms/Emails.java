@@ -103,7 +103,7 @@ public class Emails implements Serializable {
         final StringBuilder sb = new StringBuilder("Emails{");
         sb.append("idemails=").append(idemails);
         sb.append(", email='").append(email).append('\'');
-        sb.append(", googleAccountsIdgoogleAccounts=").append(googleAccountsIdgoogleAccounts.getIdgoogleAccounts());
+        if (googleAccountsIdgoogleAccounts != null) sb.append(", googleAccountsIdgoogleAccounts=").append(googleAccountsIdgoogleAccounts.getIdgoogleAccounts());
         sb.append(", personIdperson=").append(personIdperson.getIdperson());
         sb.append('}');
         return sb.toString();
