@@ -44,7 +44,7 @@ public class Person implements Serializable {
 
     @Basic(optional = false)
     @NotNull
-    @Column(name = "date_of_birth")
+    @Column(name = "date_of_birth", columnDefinition="DATE")
     private LocalDate dateOfBirth;
 
     @Basic(optional = false)
