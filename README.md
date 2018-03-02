@@ -11,6 +11,11 @@ The high-level architecture design:
 
 Source of scheme is  [here](https://www.lucidchart.com/documents/view/90174cab-00d1-43a2-886b-0d83f6922d4f)
 
+The first version of a database (with MySQL RDBMS):
+
+![**first version**](https://raw.githubusercontent.com/Evegen55/remote_banking/master/src/test/resources/for_readme/first_rdbms.PNG)
+
+
 Deployment to a google cloud:
 
  - [With no billing](https://youtu.be/5wNI4Btpbos)
