@@ -3,7 +3,9 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.RELEASE")
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.0.0.RELEASE'
+        classpath 'org.liquibase:liquibase-gradle-plugin:1.2.4'
+        classpath 'mysql:mysql-connector-java:5.1.45'
     }
 }
 
@@ -12,6 +14,7 @@ version '3.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'org.liquibase.gradle'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
@@ -37,4 +40,28 @@ dependencies {
 
 task wrapper(type: Wrapper) {
     gradleVersion = '4.5.1'
+}
+
+Properties props = new Properties()
+props.load(new FileInputStream(file("$projectDir/src/main/resources/db_connections.properties")))
+
+def dataBaseURL = props['datasource.url']
+def _username = props['datasource.username']
+def _password = props['datasource.password']
+
+
+def rootDbDir = "$projectDir/rdbms_flow"
+def pathToChangelog = 'liquibase-rdb.xml'
+
+liquibase {
+    activities {
+        main {
+            classpath "${rootDbDir}"
+            changeLogFile pathToChangelog
+            url dataBaseURL
+            username _username
+            password _password
+        }
+        runList = 'main'
+    }
 }
