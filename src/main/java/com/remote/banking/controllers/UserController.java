@@ -1,6 +1,7 @@
 package com.remote.banking.controllers;
 
 import com.remote.banking.models.dao.UserDAO;
+import com.remote.banking.models.for_rdbms.Emails;
 import com.remote.banking.models.for_rdbms.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,5 +46,17 @@ public class UserController {
                 .contentType(MediaType.TEXT_PLAIN)
                 .header(HttpHeaders.CONTENT_DISPOSITION)
                 .body(byId.toString());
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/users/{idperson}/emails")
+    public ResponseEntity<String> getUserEmails(@PathVariable int idperson) {
+        LOGGER.info("Start retrieve all emails for person with id {} from database", idperson);
+        final Person byId = userDAO.findById(idperson);
+        List<Emails> emailsList = byId.getEmailsList();
+        LOGGER.info("Emails with size {} retrieved from database", emailsList.size());
+        return ResponseEntity.ok()
+                .contentType(MediaType.TEXT_PLAIN)
+                .header(HttpHeaders.CONTENT_DISPOSITION)
+                .body(emailsList.toString());
     }
 }
