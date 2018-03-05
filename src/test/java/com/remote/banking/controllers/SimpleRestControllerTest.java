@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(SimpleRestController.class)
+@WebMvcTest(SimpleRestController.class) //Spring Boot is only instantiating the web layer, not the whole context
 @ContextConfiguration(classes = {TestApplication.class})
 public class SimpleRestControllerTest {
 
