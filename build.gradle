@@ -28,9 +28,9 @@ dependencies {
     compile("mysql:mysql-connector-java:5.1.45")
     compile("org.hibernate:hibernate-core:5.2.2.Final")
     compile("org.hibernate:hibernate-entitymanager:5.2.2.Final")
-    compile("org.hibernate:hibernate-entitymanager:5.2.2.Final")
+    compile("com.google.code.gson:gson:2.8.2")
 
-    testCompile("junit.junit:4.12")
+    testCompile("junit:junit:4.12")
     testCompile("org.springframework.boot:spring-boot-starter-test")
     //compile('com.h2database:h2:1.4.193')
 }
