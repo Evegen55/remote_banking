@@ -2,6 +2,8 @@ package com.remote.banking.controllers;
 
 import com.remote.banking.models.dao.UserDAO;
 import com.remote.banking.models.for_rdbms.Person;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -17,14 +19,16 @@ import java.util.List;
 @RequestMapping("${api.root}")
 public class UserController {
 
+    private final static Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     private UserDAO userDAO;
 
     @RequestMapping(method = RequestMethod.GET, value = "/users")
     public ResponseEntity<String> getUserInfo() {
-
+        LOGGER.info("Start retrieve all persons from database");
         final List<Person> all = userDAO.findAllPersons();
-
+        LOGGER.info("All persons from database have been retrieved");
         return ResponseEntity.ok()
                 .contentType(MediaType.TEXT_PLAIN)
                 .header(HttpHeaders.CONTENT_DISPOSITION)
@@ -34,9 +38,9 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/users/{idperson}")
     public ResponseEntity<String> getUserInfo(@PathVariable int idperson) {
-
+        LOGGER.info("Start retrieve person with id {} from database", idperson);
         final Person byId = userDAO.findById(idperson);
-
+        LOGGER.info("Person {} retrieved from database", byId);
         return ResponseEntity.ok()
                 .contentType(MediaType.TEXT_PLAIN)
                 .header(HttpHeaders.CONTENT_DISPOSITION)
