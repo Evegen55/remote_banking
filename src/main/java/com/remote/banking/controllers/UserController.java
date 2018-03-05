@@ -31,7 +31,7 @@ public class UserController {
         final List<Person> all = userDAO.findAllPersons();
         LOGGER.info("All persons from database have been retrieved");
         return ResponseEntity.ok()
-                .contentType(MediaType.TEXT_PLAIN)
+                .contentType(MediaType.APPLICATION_JSON)
                 .header(HttpHeaders.CONTENT_DISPOSITION)
                 .body(all.toString());
     }
@@ -43,7 +43,7 @@ public class UserController {
         final Person byId = userDAO.findById(idperson);
         LOGGER.info("Person {} retrieved from database", byId);
         return ResponseEntity.ok()
-                .contentType(MediaType.TEXT_PLAIN)
+                .contentType(MediaType.APPLICATION_JSON)
                 .header(HttpHeaders.CONTENT_DISPOSITION)
                 .body(byId.toString());
     }
@@ -55,7 +55,7 @@ public class UserController {
         List<Emails> emailsList = byId.getEmailsList();
         LOGGER.info("Emails with size {} retrieved from database", emailsList.size());
         return ResponseEntity.ok()
-                .contentType(MediaType.TEXT_PLAIN)
+                .contentType(MediaType.APPLICATION_JSON)
                 .header(HttpHeaders.CONTENT_DISPOSITION)
                 .body(emailsList.toString());
     }
