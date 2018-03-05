@@ -15,6 +15,12 @@ The first version of a database (with MySQL RDBMS):
 
 ![**first version**](https://raw.githubusercontent.com/Evegen55/remote_banking/master/src/test/resources/for_readme/first_rdbms.PNG)
 
+**NOTE!**
+
+Before deployment write credentials to a database at db_connections.properties:
+
+- datasource.username
+- datasource.password
 
 Deployment to a google cloud:
 
