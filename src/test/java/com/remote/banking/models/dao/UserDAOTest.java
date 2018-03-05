@@ -1,5 +1,6 @@
 package com.remote.banking.models.dao;
 
+import com.remote.banking.JsonEntityTransformer;
 import com.remote.banking.models.for_rdbms.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +21,8 @@ public class UserDAOTest {
     public void findById() {
         Person byId = userDAO.findById(1);
         assertTrue(byId.getFirstName().equals("John"));
+        String toJson = JsonEntityTransformer.toJson(byId);
+        System.out.println(toJson);
     }
 
     @Test
