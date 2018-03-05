@@ -25,13 +25,13 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web:1.5.10.RELEASE")
     compile("org.springframework.boot:spring-boot-starter-jdbc")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    compile ("mysql:mysql-connector-java:5.1.45")
+    compile("mysql:mysql-connector-java:5.1.45")
+    compile("org.hibernate:hibernate-core:5.2.2.Final")
+    compile("org.hibernate:hibernate-entitymanager:5.2.2.Final")
+    compile("org.hibernate:hibernate-entitymanager:5.2.2.Final")
 
-    compile 'org.hibernate:hibernate-core:5.2.2.Final'
-    compile 'org.hibernate:hibernate-entitymanager:5.2.2.Final'
-
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile("junit.junit:4.12")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
     //compile('com.h2database:h2:1.4.193')
 }
 
