@@ -49,8 +49,7 @@ public class UserController {
                 person.getGender(), formBaseRESTFulURLForUsersEmails(person.getIdperson()))).collect(toList());
         final String toJson = PRETTY_PRINTING_BUILDER.create().toJson(personDTOS);
         return ResponseEntity.ok()
-                .contentType(MediaType.TEXT_PLAIN)
-                .header(HttpHeaders.CONTENT_DISPOSITION)
+                .contentType(MediaType.APPLICATION_JSON)
                 .body(toJson);
     }
 
@@ -65,8 +64,7 @@ public class UserController {
                 personById.getDateOfBirth(), personById.getGender(), formBaseRESTFulURLForUsersEmails(personById.getIdperson()));
         final String toJson = PRETTY_PRINTING_BUILDER.create().toJson(personDTO);
         return ResponseEntity.ok()
-                .contentType(MediaType.TEXT_PLAIN)
-                .header(HttpHeaders.CONTENT_DISPOSITION)
+                .contentType(MediaType.APPLICATION_JSON)
                 .body(toJson);
     }
 
@@ -77,8 +75,7 @@ public class UserController {
         List<Emails> emailsList = byId.getEmailsList();
         LOGGER.info("Emails with size {} retrieved from database", emailsList.size());
         return ResponseEntity.ok()
-                .contentType(MediaType.TEXT_PLAIN)
-                .header(HttpHeaders.CONTENT_DISPOSITION)
+                .contentType(MediaType.APPLICATION_JSON)
                 .body(emailsList.toString());
     }
 }
