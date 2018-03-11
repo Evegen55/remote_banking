@@ -42,25 +42,17 @@ task wrapper(type: Wrapper) {
     gradleVersion = '4.5.1'
 }
 
-Properties props = new Properties()
-props.load(new FileInputStream(file("$projectDir/src/main/resources/db_connections.properties")))
-
-def dataBaseURL = props['datasource.url']
-def _username = props['datasource.username']
-def _password = props['datasource.password']
-
-
-def rootDbDir = "$projectDir/rdbms_flow"
-def pathToChangelog = 'liquibase-rdb.xml'
-
 liquibase {
+    Properties props = new Properties()
+    props.load(new FileInputStream(file("$projectDir/src/main/resources/db_connections.properties")))
+
     activities {
         main {
-            classpath "${rootDbDir}"
-            changeLogFile pathToChangelog
-            url dataBaseURL
-            username _username
-            password _password
+            classpath "$projectDir/rdbms_flow"
+            changeLogFile 'liquibase-rdb.xml'
+            url props['datasource.url']
+            username props['datasource.username']
+            password props['datasource.password']
         }
         runList = 'main'
     }
