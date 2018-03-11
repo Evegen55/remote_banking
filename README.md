@@ -28,6 +28,9 @@ Deployment to a google cloud:
  - [With enabled billing](TODO)
  - [External link](TODO)
  
+ To run an application do: `./gradlew update bootRun`
+ 
+ (Liquibase update task creates a schema and populates it by demo data.)
  
  ## License
  
