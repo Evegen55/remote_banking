@@ -49,7 +49,7 @@ liquibase {
     activities {
         main {
             classpath "$projectDir/rdbms_flow"
-            changeLogFile 'liquibase-rdb.xml'
+            changeLogFile props['liquibase.changelogfile']
             url props['datasource.url']
             username props['datasource.username']
             password props['datasource.password']
