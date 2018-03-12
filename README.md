@@ -1,11 +1,11 @@
 # An example of modern web application by implementing remote banking system
 ### designed with REST, microservices and OAuth authorization
 
-This app is developing with two git services:
-- [GitHub](https://github.com/Evegen55/remote_banking)
-- [Bitbucket](https://bitbucket.org/Johnn55/remote_banking)
+ This app is developing with two git services:
+ - [GitHub](https://github.com/Evegen55/remote_banking)
+ - [Bitbucket](https://bitbucket.org/Johnn55/remote_banking)
 
-The high-level architecture design:
+## The high-level architecture design:
 
 ![**high-level**](https://raw.githubusercontent.com/Evegen55/remote_banking/master/src/test/resources/for_readme/high-level_remote_banking.png)
 
@@ -17,10 +17,10 @@ The first version of a database (with MySQL RDBMS):
 
 **NOTE!**
 
-Before deployment write credentials to a database at db_connections.properties:
+Before deployment write credentials to a database at `db_connections.properties`:
 
-- datasource.username
-- datasource.password
+- `datasource.username`
+- `datasource.password`
 
 Deployment to a google cloud:
 
@@ -28,20 +28,34 @@ Deployment to a google cloud:
  - [With enabled billing](TODO)
  - [External link](TODO)
  
- ### Build and run
+## Build and run
+
+ **Important!**
+
+ This project has [Liquibase plugin ](liquibase.org) in order to manage RDMBS development flow.
+ The main purpose to use that is to have knowledge about changes in a database.
+ If you did the first creation of a database manually via init.sql file -
+ do not run `update` command with gradle until you make other changes in a database.
+ In that case put path to your file with `liquibase.changelogfile` field at `db_connections.properties`
+ (path has to be relative to folder `$projectDir/rdbms_flow`)
+ If you want to do the first creation of a database via Liquibase plugin -
+ first you have to create a schema (database) as named in connection URL (remote_banking).
+ Just because Liquibase has no ability to create schema.
+
+ So to run application:
  
- - in case updating database via Liquibase plugin with tests:
+ - In case updating RDBMS via Liquibase plugin. Gradle will also run tests:
   
     `./gradlew update bootRun`
     
     (Liquibase update task creates a schema and populates it by demo data.)
     
- - in case start with tests:
+ - In case start application without updating RDBMS. Gradle will also run tests:
  
     `./gradlew bootRun`
  
  
- ## License
+## License
  
  Copyright (C) 2018 - 2018 [Evgenii Lartcev](https://github.com/Evegen55/) and contributors
  
