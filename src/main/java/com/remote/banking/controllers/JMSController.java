@@ -27,6 +27,8 @@ public class JMSController {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(JMSController.class);
 
+    public final static String DESTINATION_NAME = "mailbox";
+
     @Autowired
     ConfigurableApplicationContext configurableApplicationContext;
 
@@ -50,7 +52,8 @@ public class JMSController {
                 new PersonDTO("firstName1-fake-user", "lastName-fake-user",
                         LocalDate.now(), "fake-user", "fake-user");
         final String toJson = PRETTY_PRINTING_BUILDER.create().toJson(personDTO);
-        jmsTemplate.convertAndSend("mailbox", toJson);
+
+        jmsTemplate.convertAndSend(DESTINATION_NAME, toJson);
         final String email_has_been_sent = "Email has been sent";
         LOGGER.info(email_has_been_sent);
 
