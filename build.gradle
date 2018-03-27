@@ -32,6 +32,8 @@ dependencies {
         force = true
     }
     compile("com.google.code.gson:gson:2.8.2")
+    compile("org.springframework.boot:spring-boot-starter-activemq:2.0.0.RELEASE")
+    compile("org.apache.activemq:activemq-broker:2.0.0.RELEASE")
 
     testCompile("junit:junit:4.12")
     testCompile("org.springframework.boot:spring-boot-starter-test:2.0.0.RELEASE")

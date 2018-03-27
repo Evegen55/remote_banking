@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static com.remote.banking.app.SpringBootRestApplication.PRETTY_PRINTING_BUILDER;
 import static java.util.stream.Collectors.toList;
 
 @RestController
@@ -41,8 +42,6 @@ public class UserController {
     private String formBaseRESTFulURLForUsersEmails(final int idperson) {
         return formBaseRESTFulURLForUser(idperson) + "/emails";
     }
-
-    private static final GsonBuilder PRETTY_PRINTING_BUILDER = new GsonBuilder().setPrettyPrinting();
 
     @RequestMapping(method = RequestMethod.GET, value = "/users")
     public ResponseEntity<String> getUserInfo() {
