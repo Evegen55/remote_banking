@@ -21,6 +21,17 @@ import java.time.LocalDate;
 
 import static com.remote.banking.app.SpringBootRestApplication.PRETTY_PRINTING_BUILDER;
 
+/**
+ * Two beans that we don’t see defined are JmsTemplate and ConnectionFactory.
+ * These are created automatically by Spring Boot.
+ * In this case, the ActiveMQ broker runs embedded.
+ * <p>
+ * By default, Spring Boot creates a JmsTemplate configured to transmit to queues by having pubSubDomain set to false.
+ * The JmsMessageListenerContainer is also configured the same.
+ * To override, set spring.jms.isPubSubDomain=true via Boot’s property settings
+ * (either inside application.properties or by environment variable).
+ * Then make sure the receiving container has the same setting.
+ */
 @RestController
 @RequestMapping("${api.root}/send-to-jms-queue")
 public class JMSController {
