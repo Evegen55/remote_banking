@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.jms.ConnectionFactory;
 import java.time.LocalDate;
 
-import static com.remote.banking.controllers.UserController.PRETTY_PRINTING_BUILDER;
+import static com.remote.banking.app.SpringBootRestApplication.PRETTY_PRINTING_BUILDER;
 
 @RestController
 @RequestMapping("${api.root}/send-to-jms-queue")
