@@ -5,10 +5,8 @@ import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.jms.annotation.EnableJms;
 
 @SpringBootApplication(scanBasePackages = {"com.remote.banking"})
-@EnableJms
 public class SpringBootRestApplication extends SpringBootServletInitializer {
 
     public static final GsonBuilder PRETTY_PRINTING_BUILDER = new GsonBuilder().setPrettyPrinting();
