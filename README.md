@@ -59,11 +59,11 @@ Deployment to a google cloud:
 
 ### GET
 
- - [http://localhost:8080/rest/v1/hello/world]()
- - [http://localhost:8080/rest/v1/users]()
- - [http://localhost:8080/rest/v1/users/1]()
- - [http://localhost:8080/rest/v1/users/1/emails]()
- - [http://localhost:8080/rest/v1/send-to-jms-queue/fake-user]()
+ - [http://localhost:8080/rest/v1/hello/world](http://localhost:8080/rest/v1/hello/world)
+ - [http://localhost:8080/rest/v1/users](http://localhost:8080/rest/v1/users)
+ - [http://localhost:8080/rest/v1/users/1](http://localhost:8080/rest/v1/users/1)
+ - [http://localhost:8080/rest/v1/users/1/emails](http://localhost:8080/rest/v1/users/1/emails)
+ - [http://localhost:8080/rest/v1/send-to-jms-queue/fake-user](http://localhost:8080/rest/v1/send-to-jms-queue/fake-user)
 
 ### POST
 
