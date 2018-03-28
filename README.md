@@ -53,6 +53,20 @@ Deployment to a google cloud:
  - In case start application without updating RDBMS. Gradle will also run tests:
  
     `./gradlew bootRun`
+
+## ENDPOINTS for HTTP-methods:
+
+### GET
+
+ - [http://localhost:8080/rest/v1/hello/world]()
+ - [http://localhost:8080/rest/v1/users]()
+ - [http://localhost:8080/rest/v1/users/1]()
+ - [http://localhost:8080/rest/v1/users/1/emails]()
+ - [http://localhost:8080/rest/v1/send-to-jms-queue/fake-user]()
+
+### POST
+
+ - TODO
  
  
 ## License
