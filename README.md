@@ -54,7 +54,8 @@ Deployment to a google cloud:
  
     `./gradlew bootRun`
 
-## ENDPOINTS for HTTP-methods (to tune API root see also api.root property):
+## ENDPOINTS for HTTP-methods:
+(to tune API root see also api.root property)
 
 ### GET
 
