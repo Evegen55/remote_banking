@@ -67,7 +67,24 @@ Deployment to a google cloud:
 
 ### POST
 
- - TODO
+ - [http://localhost:8080/rest/v1/users](http://localhost:8080/rest/v1/users)
+ 
+ 
+    accept: application/json    
+    content-type: application/json    
+    
+    {"firstName": "John",
+     "lastName": "Doe",
+     "dateOfBirth": {
+        "year": 2000,
+        "month": 1,
+        "day": 1
+     },
+     "gender": "man"
+     }
+    
+    RESPONSE: HTTP 201 (Created)
+    Location header: http://localhost:8080/rest/v1/users/1
  
  
 ## License
