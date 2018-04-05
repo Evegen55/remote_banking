@@ -73,14 +73,16 @@ Deployment to a google cloud:
     accept: application/json    
     content-type: application/json    
     
-    {"firstName": "John",
-     "lastName": "Doe",
-     "dateOfBirth": {
-        "year": 2000,
-        "month": 1,
-        "day": 1
-     },
-     "gender": "man"
+    {
+    
+        "firstName": "John",
+        "lastName": "Doe",
+        "dateOfBirth": {
+            "year": 2000,
+            "month": 1,
+            "day": 1
+        },
+        "gender": "man"
      }
     
     RESPONSE: HTTP 201 (Created)
