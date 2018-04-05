@@ -29,9 +29,12 @@ public class UserDAOTest {
     }
 
     @Test
+    // TODO: 05.04.2018 delete user after test
     public void createPerson() {
         int userId = userDAO.createAndStoreNewUser("firstName", "lastName",
                 LocalDate.of(2014, 8, 14), "man");
         assertTrue(userId > 0);
+
+        userDAO.deleteUserAndSkipId(userId);
     }
 }
