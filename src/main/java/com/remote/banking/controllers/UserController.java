@@ -1,6 +1,5 @@
 package com.remote.banking.controllers;
 
-import com.google.gson.GsonBuilder;
 import com.remote.banking.models.dao.UserDAO;
 import com.remote.banking.models.dto.EmailsDTO;
 import com.remote.banking.models.dto.PersonDTO;
@@ -9,13 +8,13 @@ import com.remote.banking.models.for_rdbms.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 import static com.remote.banking.app.SpringBootRestApplication.PRETTY_PRINTING_BUILDER;
@@ -57,6 +56,21 @@ public class UserController {
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(toJson);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/users",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createUserWithNoEmail(@RequestBody final String jsonBody,
+                                      final HttpServletRequest request, final HttpServletResponse response) {
+        LOGGER.info("Receive: {}", jsonBody);
+        final Person person = PRETTY_PRINTING_BUILDER.create().fromJson(jsonBody, Person.class);
+        final int newUserId = userDAO.createAndStoreNewUser(person);
+        response.setHeader("Location", request.getRequestURL()
+                .append("/")
+                .append(newUserId)
+                .toString());
     }
 
 

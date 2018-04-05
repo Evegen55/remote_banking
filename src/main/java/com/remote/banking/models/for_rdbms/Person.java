@@ -44,7 +44,7 @@ public class Person implements Serializable {
 
     @Basic(optional = false)
     @NotNull
-    @Column(name = "date_of_birth", columnDefinition="DATE")
+    @Column(name = "date_of_birth", columnDefinition = "DATE")
     private LocalDate dateOfBirth;
 
     @Basic(optional = false)
@@ -65,6 +65,13 @@ public class Person implements Serializable {
 
     public Person(Integer idperson, String firstName, String lastName, LocalDate dateOfBirth, String gender) {
         this.idperson = idperson;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+    }
+
+    public Person(String firstName, String lastName, LocalDate dateOfBirth, String gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
