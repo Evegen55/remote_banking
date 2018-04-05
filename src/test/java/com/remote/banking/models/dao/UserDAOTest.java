@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDate;
+
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
@@ -24,5 +26,12 @@ public class UserDAOTest {
 
     @Test
     public void findAllPersons() {
+    }
+
+    @Test
+    public void createPerson() {
+        int userId = userDAO.createAndStoreNewUser("firstName", "lastName",
+                LocalDate.of(2014, 8, 14), "man");
+        assertTrue(userId > 0);
     }
 }

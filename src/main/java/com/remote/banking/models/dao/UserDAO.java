@@ -46,11 +46,9 @@ public class UserDAO {
 
     @Transactional(propagation = Propagation.SUPPORTS)
     public List<Person> findAllPersons() {
-
         LOGGER.info("Start find all {}", personClass);
         final TypedQuery<Person> query = entityManager.createNamedQuery("Person.findAll", personClass);
         final List<Person> results = query.getResultList();
-
         return results;
     }
 
@@ -58,6 +56,12 @@ public class UserDAO {
     public int createAndStoreNewUser(String firstName, String lastName, LocalDate of, String gender) {
         LOGGER.info("Creating new person with NO emails");
         final Person person = new Person(firstName, lastName, of, gender);
+        return createAndStoreNewUser(person);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public int createAndStoreNewUser(final Person person) {
+        LOGGER.info("Creating new person with NO emails");
         final Person savedPerson = userRepository.save(person);
         LOGGER.info("{} with NO emails has been created", person);
         return savedPerson.getIdperson();
