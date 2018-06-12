@@ -66,4 +66,8 @@ public class UserDAO {
         LOGGER.info("{} with NO emails has been created", person);
         return savedPerson.getIdperson();
     }
+
+    public void deleteUserAndSkipId(final int userId) {
+        // TODO: 05.04.2018 implement this method
+    }
 }

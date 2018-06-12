@@ -1,8 +1,9 @@
 package com.remote.banking.models.dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class PersonDTO {
+public class PersonDTO implements Serializable {
 
     public final String firstName;
 

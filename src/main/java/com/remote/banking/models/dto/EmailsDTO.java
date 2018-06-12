@@ -1,6 +1,8 @@
 package com.remote.banking.models.dto;
 
-public class EmailsDTO {
+import java.io.Serializable;
+
+public class EmailsDTO implements Serializable {
 
     public final String email;
 
