@@ -39,7 +39,7 @@ dependencies {
 
     testCompile("junit:junit:4.12")
     testCompile("org.springframework.boot:spring-boot-starter-test")
-    //compile('com.h2database:h2:1.4.193')
+    testCompile('com.h2database:h2:1.4.197')
 }
 
 task wrapper(type: Wrapper) {
