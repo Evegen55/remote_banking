@@ -7,7 +7,8 @@ import com.remote.banking.models.for_rdbms.Emails;
 import com.remote.banking.models.for_rdbms.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -26,12 +27,25 @@ public class UserController {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
-    @Autowired
-    private UserDAO userDAO;
+    private final UserDAO userDAO;
+    private final ServerProperties serverProperties;
 
-    // TODO: 3/6/2018 get web path parameters from settings or context
+    @Value("${api.root}")
+    private String apiRoot;
+    @Value("${api.root.users}")
+    private String apiRootUsers;
+
+    public UserController(UserDAO userDAO, ServerProperties serverProperties) {
+        this.userDAO = userDAO;
+        this.serverProperties = serverProperties;
+    }
+
     private String formBaseRESTFulURLForUsers() {
-        return "http://localhost:8080/rest/v1" + "/users";
+        final String hostAddress = serverProperties.getAddress().getHostAddress();
+        final int port = serverProperties.getPort();
+        final String contextPath = serverProperties.getServlet().getContextPath();
+        final String actualUrl = "http://" + hostAddress + ":" + port + contextPath + apiRoot + apiRootUsers;
+        return actualUrl;
     }
 
     private String formBaseRESTFulURLForUser(final int idperson) {
