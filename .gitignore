@@ -2,3 +2,5 @@
 *.iml
 .gradle/
 *.bak
+build
+out
